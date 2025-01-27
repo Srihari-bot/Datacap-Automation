@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "000b7f29-7018-44a2-a20e-bc0a56acaa0b",
+		"name": "text",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Logon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<LogonProperties>\r\n  <application>{DatacapApplicationName}</application>\r\n  <password>admin</password>\r\n  <station>1</station>\r\n  <user>admin</user>\r\n</LogonProperties>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://host:port/ServicewTM.svc/Session/Logon",
+					"protocol": "http",
+					"host": [
+						"host"
+					],
+					"port": "port",
+					"path": [
+						"ServicewTM.svc",
+						"Session",
+						"Logon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBatch",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<createBatchAttributes>\r\n    <application>{DatacapApplicationName}</application>\r\n    <job>Demo_MultiFormat</job>\r\n</createBatchAttributes>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://host:port/ServicewTM.svc/Queue/CreateBatch",
+					"protocol": "http",
+					"host": [
+						"host"
+					],
+					"port": "port",
+					"path": [
+						"ServicewTM.svc",
+						"Queue",
+						"CreateBatch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadFile",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "File",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "Back",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://host:port/ServicewTM.svc/Queue/UploadFile/{DatacapApplicationName}/{queueid}",
+					"protocol": "http",
+					"host": [
+						"host"
+					],
+					"port": "port",
+					"path": [
+						"ServicewTM.svc",
+						"Queue",
+						"UploadFile",
+						"{DatacapApplicationName}",
+						"{queueid}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReleaseBatch",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://host:port/ServicewTM.svc/Queue/ReleaseBatch/{DatacapApplicationName}/{queueid}/finished",
+					"protocol": "http",
+					"host": [
+						"host"
+					],
+					"port": "port",
+					"path": [
+						"ServicewTM.svc",
+						"Queue",
+						"ReleaseBatch",
+						"{DatacapApplicationName}",
+						"{queueid}",
+						"finished"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
